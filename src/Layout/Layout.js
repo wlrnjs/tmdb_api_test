@@ -1,5 +1,5 @@
 import React from 'react';
-import "./LayOut.css"
+import "./Layout.css"
 import {Outlet} from "react-router-dom";
 import {Link} from "react-router-dom";
 
@@ -12,16 +12,13 @@ const Layout = () => {
 				</Link>
 				<div className="nav-item">
 					<ul className="nav-item-ul">
-						<Link to="/" className="Link">홈</Link>
-						<Link to="/" className="Link">시리즈</Link>
-						<Link to="/" className="Link">영화</Link>
-						<Link to="/" className="Link">요즘 대세 콘텐츠</Link>
-						<Link to="/" className="Link">내가 찜한 리스트</Link>
+						<Link to="/" className="Link">Home</Link>
+						<Link to="/" className="Link">All Movies</Link>
+						<Link to="/" className="Link">Popular Movies</Link>
+						<Link to="/" className="Link">Favorite Movies</Link>
+						<Link to="/" className="Link">Upcoming Movies</Link>
 					</ul>
-				</div>
-				<div className="nav-search">
-					<input type="text" placeholder="SEARCH"/>
-					<button>SEARCH</button>
+					<input type="text" placeholder="ENTER"/>
 				</div>
 			</div>
 			<Outlet/>

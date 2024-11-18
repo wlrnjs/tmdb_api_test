@@ -7,7 +7,6 @@ import {useNavigate} from "react-router-dom";
 const Banner = () => {
 	const Navigate = useNavigate();
 	const {data, isLoading, isError, error} = usePopularMovieQuery();
-	console.log(data)
 	if (isError) return <Alert variant="danger">{error.message}</Alert>
 	if (isLoading) return <h1>Loading...</h1>
 	
@@ -15,7 +14,7 @@ const Banner = () => {
 		Navigate(`/movie/${movie_id}/videos`)
 	}
 	
-	const goToMovieDetails = (id) => {
+	const goToMovie = (id) => {
 		Navigate(`/movies/${id}`);
 	}
 	
@@ -32,7 +31,7 @@ const Banner = () => {
 				<p>{data?.results[0].overview}</p>
 				<div className="banner-button">
 					<button className="button-play" onClick={()=>goToMovieVideos(data.result.video)}>PLAY</button>
-					<button className="button-detail" onClick={() => goToMovieDetails(data.results.id)}>MOVIE DETAIL</button>
+					<button className="button-detail" onClick={() => goToMovie(data.results[0].id)}>MOVIE DETAIL</button>
 				</div>
 			</div>
 		

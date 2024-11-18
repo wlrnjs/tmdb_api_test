@@ -4,14 +4,14 @@ import {useMovieDetailsQuery} from "../../hooks/useMovieDetail";
 import {Alert} from "react-bootstrap";
 import {useParams} from "react-router-dom";
 import {useGenreQuery} from "../../hooks/useGenre";
+import {useMovieActorQuery} from "../../hooks/useMovieActor";
 
 const MovieDetailPage = () => {
 	const {id} = useParams();
 	const {data, isError, error, isLoading} = useMovieDetailsQuery(id);
 	const {data: genreData} = useGenreQuery();
-	console.log('genreData:', genreData);
-	
-	console.log('detail', data);
+	const {data: actorData} = useMovieActorQuery(id);
+	console.log(actorData);
 	if (isError) return <Alert variant="danger">{error.message}</Alert>
 	if (isLoading) return <h1>Loading...</h1>
 	

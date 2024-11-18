@@ -6,7 +6,6 @@ import {responsive} from "../../Common/responsive";
 
 const NowPlayingMovieSlider = () => {
 	const {data, isError, error, isLoading} = useNowPlayingMovieQuery();
-	console.log(data)
 	if (isLoading) return <h1>Loading...</h1>
 	if (isError) return <Alert>{error.message}</Alert>;
 	
