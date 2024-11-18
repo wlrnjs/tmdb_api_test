@@ -1,0 +1,1 @@
+export const overImage = `https://www.gamevu.co.kr/news/photo/202403/31498_83353_4740.jpg`
