@@ -30,6 +30,10 @@ ul {
     color: white;
 }
 
+.Link:hover {
+    color: rgb(186, 186, 186);
+}
+
 .navbar input {
     margin-left: auto;
     margin-right: 100px;

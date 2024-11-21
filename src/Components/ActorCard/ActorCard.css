@@ -1,0 +1,21 @@
+.ActorCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 200px;
+}
+
+.ActorCard img {
+    width: 6vw;
+    height: 8vw;
+}
+
+.ActorCard h3 {
+    margin: 2px 0 5px 0;
+}
+
+.ActorCard h6 {
+    margin-top: 2px;
+}
