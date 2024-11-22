@@ -1,3 +1,7 @@
+.container {
+    display: flex;
+}
+
 .movie-card {
     width: 220px;
     height: 330px;
@@ -65,4 +69,8 @@
 
 .movie-card-item button:hover {
     background-color: rgb(230, 230, 230);
+}
+
+.movieCardImg {
+    width: 22px;
 }

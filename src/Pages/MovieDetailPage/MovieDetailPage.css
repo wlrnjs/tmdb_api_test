@@ -40,3 +40,9 @@ hr {
     gap: 10px;
     margin-top: 20px;
 }
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

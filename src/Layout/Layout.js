@@ -1,9 +1,20 @@
 import React from 'react';
 import "./Layout.css"
-import {Outlet} from "react-router-dom";
+import {Outlet, useNavigate} from "react-router-dom";
 import {Link} from "react-router-dom";
+import {useState} from "react";
 
 const Layout = () => {
+	const navigate = useNavigate();
+	const [keyword, setKeyword] = useState("");
+	
+	const searchMovie = (event, keyword) => {
+		event.preventDefault();
+		setKeyword(event.target.value);
+		console.log(keyword);
+		navigate(`/movie?q=${keyword}`);
+	}
+	
 	return (
 		<>
 			<div className="navbar">
@@ -17,9 +28,8 @@ const Layout = () => {
 						<Link to="/movies/upcoming_movies" className="Link">Upcoming Movies</Link>
 						<Link to="/movies/top_rated_movies" className="Link">Top Rated Movies</Link>
 						<Link to="/movies/now_playing_movies" className="Link">Now Playing Movies</Link>
-						<Link to="/" className="Link">All Movies</Link>
 					</ul>
-					<input type="text" placeholder="ENTER"/>
+					<input type="text" placeholder="Enter a movie" value={keyword} onChange={searchMovie}/>
 				</div>
 			</div>
 			<Outlet/>

@@ -6,13 +6,17 @@ import {useParams} from "react-router-dom";
 import {useGenreQuery} from "../../hooks/useGenre";
 import {useMovieActorQuery} from "../../hooks/useMovieActor";
 import ActorCard from "../../Components/ActorCard/ActorCard";
+import {useMovieReviewQuery} from "../../hooks/useMovieReviews";
+import ReviewsCard from "../../Components/ReviewsCard/ReviewsCard";
 
 const MovieDetailPage = () => {
 	const {id} = useParams();
 	const {data, isError, error, isLoading} = useMovieDetailsQuery(id);
+	const {data: reviewsData} = useMovieReviewQuery(id);
 	const {data: genreData} = useGenreQuery();
 	const {data: actorData} = useMovieActorQuery(id);
-	console.log(actorData);
+	const {data: movieDetail} = useMovieDetailsQuery(id);
+	console.log(movieDetail);
 	if (isError) return <Alert variant="danger">{error.message}</Alert>
 	if (isLoading) return <h1>Loading...</h1>
 	
@@ -20,7 +24,7 @@ const MovieDetailPage = () => {
 		if (!genreId) return [];
 		const genreNameList = genreId?.map((id) => {
 			const genreObj = genreData?.genres.find((genre) => genre.id === id);
-			return genreObj.name;
+			return genreObj?.name || 'Unknown';
 		})
 		return genreNameList
 	}
@@ -31,6 +35,7 @@ const MovieDetailPage = () => {
 		return `${hours}h ${minutes}m`;
 	};
 	
+	
 	return (
 		<>
 			<div className="movie-detail-page">
@@ -38,9 +43,19 @@ const MovieDetailPage = () => {
 				<div className="movie-detail-page-content">
 					<h1>{`${data?.original_title}`}</h1>
 					<div className="movie-detail-page-item">
-						<p>{`Video : ${data?.video ? '1' : 'None'}`}</p>
+						<p>
+							{data?.adult ? (
+								<img style={{width: "22px", borderRadius: "10px"}} className="movieCardImg"
+								     src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcFXmBxi-1UnU4viWo98mffvGP1P77sNakwg&s'
+								     alt=""/>
+							) : (
+								<img style={{width: "25px", borderRadius: "10px"}} className="movieCardImg"
+								     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrB4t_6EMaTKTb0EbF5yTmck6tOfZGxZg6Pg&s"
+								     alt=""/>
+							)}
+						</p>
 						<p>{`Runtime : ${showRuntime(data?.runtime)}`}</p>
-						<p>{`Language : ${data?.spoken_languages[0].english_name}`}</p>
+						<p>{`Language : ${data?.spoken_languages?.[0]?.english_name || 'Unknown'}`}</p>
 						<p>{`Genre: ${showGenres(data?.genres.map((genre) => genre.id)).join(', ')}`}</p>
 						<p>{`Popularity : ${data?.popularity}`}</p>
 					</div>
@@ -48,13 +63,27 @@ const MovieDetailPage = () => {
 				</div>
 			</div>
 			<hr/>
+			<p style={{textAlign: "center"}}>Actor</p>
 			<div className="movie-detail-page-actor">
-				<p className="movie-actor">
+				<div className="movie-actor">
 					{actorData?.cast.slice(0, 10).map((actor, index) => (
-					<ActorCard key={index} profile={actor.profile_path} name={actor.name} character={actor.character} />
-				))}
-				</p>
+						<ActorCard key={index} profile={actor.profile_path} name={actor.name} character={actor.character}/>
+					))}
+				</div>
 			</div>
+			<hr/>
+			<p style={{textAlign: "center"}}>Reviews</p>
+			<div className="movie-detail-page-reviews">
+				<div className="reviews">
+					{reviewsData?.results.map((result, index) => (
+						<ReviewsCard key={index} userName={result.author_details.username} create={result.created_at}
+						             review={result.content}/>
+					))}
+				</div>
+			</div>
+			<hr/>
+			<h2>Recommended Movies</h2>
+
 		</>
 	);
 };
