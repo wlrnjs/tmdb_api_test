@@ -6,7 +6,7 @@ const fetchRecommendMovies = (id) => {
 }
 
 export const useRecommendMoviesQuery = (id) => {
-	useQuery({
+	return useQuery({
 		queryKey: ["movie-recommend", id],
 		queryFn: ()=>fetchRecommendMovies(id),
 		select: (result) => result.data,

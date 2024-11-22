@@ -3,6 +3,7 @@ import "../container.css"
 import MovieCard from "../../Components/MovieCard/MovieCard";
 import {Alert} from "react-bootstrap";
 import {useNowPlayingMovieQuery} from "../../hooks/useNowPlayingMovie";
+import MovieSearchBox from "../../Common/MovieSearchBox";
 
 const NowPlayingMoviesPage = () => {
 	const {data, isError, error, isLoading} = useNowPlayingMovieQuery();
@@ -10,8 +11,11 @@ const NowPlayingMoviesPage = () => {
 	if (isError) return <Alert>{error.message}</Alert>;
 	
 	return (
-		<div className="container">
-			{data?.results.map((movie, index) => (<MovieCard className="container-item" movie={movie} key={index}/>))}
+		<div className="MoviePage">
+			<MovieSearchBox/>
+			<div className="container">
+				{data?.results.map((movie, index) => (<MovieCard className="container-item" movie={movie} key={index}/>))}
+			</div>
 		</div>
 	);
 };

@@ -8,6 +8,10 @@ import {useMovieActorQuery} from "../../hooks/useMovieActor";
 import ActorCard from "../../Components/ActorCard/ActorCard";
 import {useMovieReviewQuery} from "../../hooks/useMovieReviews";
 import ReviewsCard from "../../Components/ReviewsCard/ReviewsCard";
+import {useRecommendMoviesQuery} from "../../hooks/useRecommendMovies";
+import MovieCard from "../../Components/MovieCard/MovieCard";
+import {useMovieVideoQuery} from "../../hooks/useMovieVideos";
+import MovieYoutubeModal from "../../Common/MovieYoutubeModal";
 
 const MovieDetailPage = () => {
 	const {id} = useParams();
@@ -15,8 +19,9 @@ const MovieDetailPage = () => {
 	const {data: reviewsData} = useMovieReviewQuery(id);
 	const {data: genreData} = useGenreQuery();
 	const {data: actorData} = useMovieActorQuery(id);
-	const {data: movieDetail} = useMovieDetailsQuery(id);
-	console.log(movieDetail);
+	const {data: movieRecommend} = useRecommendMoviesQuery(id);
+	const {data: movieVideo} = useMovieVideoQuery(id);
+	
 	if (isError) return <Alert variant="danger">{error.message}</Alert>
 	if (isLoading) return <h1>Loading...</h1>
 	
@@ -60,6 +65,7 @@ const MovieDetailPage = () => {
 						<p>{`Popularity : ${data?.popularity}`}</p>
 					</div>
 					<p>{`${data?.overview}`}</p>
+					<MovieYoutubeModal id={movieVideo?.results?.length} />
 				</div>
 			</div>
 			<hr/>
@@ -82,8 +88,12 @@ const MovieDetailPage = () => {
 				</div>
 			</div>
 			<hr/>
-			<h2>Recommended Movies</h2>
-
+			<h2 style={{textAlign:"center"}}>Recommended Movies</h2>
+			<div className="movie-recommend">
+				{movieRecommend?.results.map((result, index) => (
+					<MovieCard movie={result} key={index}/>
+				))}
+			</div>
 		</>
 	);
 };

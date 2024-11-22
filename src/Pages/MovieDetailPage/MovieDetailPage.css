@@ -46,3 +46,11 @@ hr {
     flex-direction: column;
     gap: 20px;
 }
+
+.movie-recommend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px;
+}

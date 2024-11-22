@@ -13,3 +13,9 @@
     height: auto;
     border-radius: 8px;
 }
+
+.MoviePage {
+    display: flex;
+    margin-top: 50px;
+    width: 100%;
+}

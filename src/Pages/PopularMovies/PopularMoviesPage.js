@@ -3,8 +3,7 @@ import "../container.css"
 import MovieCard from "../../Components/MovieCard/MovieCard";
 import {Alert} from "react-bootstrap";
 import {usePopularMovieQuery} from "../../hooks/usePopularMovie";
-import {useSearchParams} from "react-router-dom";
-import {useSearchMovieQuery} from "../../hooks/useSearchMovie";
+import MovieSearchBox from "../../Common/MovieSearchBox";
 
 const PopularMoviesPage = () => {
 	const {data, isError, error, isLoading} = usePopularMovieQuery();
@@ -12,8 +11,11 @@ const PopularMoviesPage = () => {
 	if (isError) return <Alert>{error.message}</Alert>;
 	
 	return (
-		<div className="container">
-			{data?.results.map((movie, index) => (<MovieCard className="container-item" movie={movie} key={index}/>))}
+		<div className="MoviePage">
+			<MovieSearchBox/>
+			<div className="container">
+				{data?.results.map((movie, index) => (<MovieCard className="container-item" movie={movie} key={index}/>))}
+			</div>
 		</div>
 	);
 };

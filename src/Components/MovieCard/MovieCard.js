@@ -17,7 +17,7 @@ const MovieCard = ({movie}) => {
 			}}
 			className="movie-card"
 		>
-			<div className="overlay">
+			<div className="overlay" onClick={() => goToMovie(movie.id)}>
 				<img
 					src={`https://media.themoviedb.org/t/p/w533_and_h300_bestv2${movie.backdrop_path}`}
 					alt="movie-img"
@@ -32,7 +32,7 @@ const MovieCard = ({movie}) => {
 							</Badge>
 						))}
 					</p>
-					<div className="movie-card-item">
+					<div className="movie-card-item" >
 						<p>{movie?.vote_average}</p>
 						<p>{movie?.popularity}</p>
 						<p>
@@ -42,7 +42,6 @@ const MovieCard = ({movie}) => {
 								<img className="movieCardImg" src="https://i.namu.wiki/i/4rqHeSQ7TkE85vF3Vlnz59QUtkq5cE095mHuoGagn8GC1uAic4hrujblFA6fJU1zbqNKuu_5AVw01CRnVQsXMQ.svg" alt="" />
 							)}
 						</p>
-						<button onClick={() => goToMovie(movie.id)}>Movie Detail</button>
 					</div>
 				</div>
 			</div>

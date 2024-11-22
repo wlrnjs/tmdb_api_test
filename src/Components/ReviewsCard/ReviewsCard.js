@@ -20,7 +20,7 @@ const ReviewsCard = ({ userName, create, review }) => {
 				<p>{isExpanded ? review : truncatedReview}</p>
 				{review.length > 900 && !isExpanded && (
 					<button onClick={showText} className="more-button">더보기</button>
-				)}
+				)}ㅇ
 				{isExpanded && (
 					<button onClick={showText} className="more-button">접기</button>
 				)}
