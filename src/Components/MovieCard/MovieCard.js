@@ -2,12 +2,23 @@ import React from "react";
 import "./MovieCard.css";
 import {Badge} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
+import {useGenreQuery} from "../../hooks/useGenre";
 
 const MovieCard = ({movie}) => {
 	const navigate = useNavigate();
+	const {data: genreData} = useGenreQuery();
 	
 	const goToMovie = (id) => {
 		navigate(`/movies/${id}`);
+	}
+	
+	const showGenres = (genreId) => {
+		if (!genreId) return [];
+		const genreNameList = genreId?.map((id) => {
+			const genreObj = genreData?.genres.find((genre) => genre.id === id);
+			return genreObj?.name || 'Unknown';
+		})
+		return genreNameList
 	}
 	
 	return (
@@ -25,21 +36,21 @@ const MovieCard = ({movie}) => {
 				/>
 				<h1>{movie.title}</h1>
 				<div className="movie-detail">
-					<p>
-						{movie.genre_ids.map((genre, index) => (
-							<Badge bg="danger" key={index}>
+					<div className="movie-detail-badge-div">
+						{showGenres(movie.genre_ids).map((genre, index) => (
+							<Badge className="movie-detail-badge" bg="danger" key={index}>
 								{genre}
 							</Badge>
 						))}
-					</p>
+					</div>
 					<div className="movie-card-item" >
 						<p>{movie?.vote_average}</p>
 						<p>{movie?.popularity}</p>
 						<p>
 							{movie?.adult ? (
-								<img className="movieCardImg" src='https://i.namu.wiki/i/Rot9rfHqZdl47HpDeWKRl6-SFH8YcraZN1kHjzyzvOK1Rx2Zbe7T5U0MmnzYsLP2Tt6nIIx-3Ilp-b-FKqAjrQ.svg' alt="" />
+								<img className="movieCardImg" src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcFXmBxi-1UnU4viWo98mffvGP1P77sNakwg&s' alt="" />
 							) : (
-								<img className="movieCardImg" src="https://i.namu.wiki/i/4rqHeSQ7TkE85vF3Vlnz59QUtkq5cE095mHuoGagn8GC1uAic4hrujblFA6fJU1zbqNKuu_5AVw01CRnVQsXMQ.svg" alt="" />
+								<img className="movieCardImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrB4t_6EMaTKTb0EbF5yTmck6tOfZGxZg6Pg&s" alt="" />
 							)}
 						</p>
 					</div>

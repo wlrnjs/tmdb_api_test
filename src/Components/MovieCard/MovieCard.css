@@ -50,7 +50,19 @@
 .movie-detail {
     display: flex;
     gap: 5px;
-    margin-left: 20px;
+    margin: 20px;
+}
+.movie-detail-badge-div {
+    display: flex;
+    gap: 10px;
+}
+
+.movie-detail-badge {
+    text-align: center;
+    width: 50px;
+    height: 20px;
+    font-size: 10px !important;
+    overflow: hidden;
 }
 
 .movie-card-item {
@@ -63,4 +75,5 @@
 
 .movieCardImg {
     width: 22px;
+    border-radius: 10px;
 }

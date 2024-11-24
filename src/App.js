@@ -8,6 +8,7 @@ import PopularMoviesPage from "./Pages/PopularMovies/PopularMoviesPage";
 import UpcomingMoviesPage from "./Pages/Upcoming Movies/UpcomingMoviesPage";
 import NowPlayingMoviesPage from "./Pages/NowPlayingMovies/NowPlayingMoviesPage";
 import TopRatedMoviesPage from "./Pages/TopRatedMovies/TopRatedMoviesPage";
+import MoviePage from "./Pages/MoviePage/MoviePage";
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 			<Route path="/" element={<Layout/>}>
 				<Route index element={<HomePage/>}/>
 				<Route path="/movies">
+					<Route index element={<MoviePage/>}/>
 					<Route path="popular_movies" element={<PopularMoviesPage/>}/>
 					<Route path="upcoming_movies" element={<UpcomingMoviesPage/>}/>
 					<Route path="now_playing_movies" element={<NowPlayingMoviesPage/>}/>

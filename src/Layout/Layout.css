@@ -1,44 +1,71 @@
 .navbar {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-between; /* 양쪽 끝으로 배치 */
-    width: 100%;
-    height: 8vh;
-    padding-left: 4vw;
-    font-weight: bold;
+    padding: 10px 30px;
+    background-color: #141414;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin: 0 20px;
 }
 
-ul {
-    list-style-type: none;
-    margin: 0; /* ul 기본 여백 제거 */
+.navbar img {
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 30px;
+    transition: transform 0.3s ease;
 }
 
-.nav-item {
+.navbar img:hover {
+    transform: scale(1.1);
+}
+
+.navbar-left {
     display: flex;
-    justify-content: start; /* 왼쪽에 배치 */
     align-items: center;
-    flex: 1; /* 공간을 차지하도록 설정 */
 }
 
 .nav-item-ul {
+    list-style: none;
     display: flex;
-    gap: 1vw;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+.nav-item-ul li {
+    display: inline;
 }
 
 .Link {
     text-decoration: none;
-    color: white;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
 .Link:hover {
-    color: rgb(186, 186, 186);
+    color: #e50914;
 }
 
-.navbar input {
-    margin-left: auto;
-    margin-right: 100px;
-    padding: 0.5rem;
+.navbar-right input[type="text"] {
+    border: none;
+    outline: none;
+    padding: 8px 12px;
     border-radius: 4px;
-    border: 1px solid #ccc;
-    border-top: none;
+    background-color: #333333;
+    color: #ffffff;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-right input[type="text"]::placeholder {
+    color: #aaaaaa;
+}
+
+.navbar-right input[type="text"]:focus {
+    background-color: #444444;
 }
