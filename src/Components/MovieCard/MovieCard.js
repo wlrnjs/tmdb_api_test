@@ -28,7 +28,7 @@ const MovieCard = ({movie}) => {
 			}}
 			className="movie-card"
 		>
-			<div className="overlay" onClick={() => goToMovie(movie.id)}>
+			<div className="overlay overlay-2" onClick={() => goToMovie(movie.id)}>
 				<img
 					src={`https://media.themoviedb.org/t/p/w533_and_h300_bestv2${movie.backdrop_path}`}
 					alt="movie-img"

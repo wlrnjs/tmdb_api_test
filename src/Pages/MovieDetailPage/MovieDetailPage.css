@@ -4,6 +4,7 @@
     align-items: center;
     gap: 2rem;
     margin-top: 5rem;
+    margin-bottom: 20px;
 }
 
 .movie-detail-page img {
@@ -28,8 +29,8 @@
 
 hr {
     width: 30%;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    text-align: center;
+    margin: 50px auto;
 }
 
 .movie-actor {
@@ -37,7 +38,7 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     margin-top: 20px;
 }
 

@@ -23,12 +23,12 @@
     right: 5rem;
     border-radius: 10px;
     cursor: pointer;
+    z-index: 3;
 }
 
 .overlay:hover {
     opacity: 1;
 }
-
 
 .overlay-img {
     width: 100%;

@@ -3,8 +3,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 150px;
-    height: 300px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -12,12 +10,15 @@
 .ActorCard img {
     width: 120px;
     height: 150px;
+    border-radius: 10px;
 }
 
 .ActorCard h3 {
     margin: 2px 0 5px 0;
+    font-size: 16px;
 }
 
 .ActorCard h6 {
     margin-top: 2px;
+    font-size: 12px;
 }
