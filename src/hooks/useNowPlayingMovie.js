@@ -1,14 +1,15 @@
 import api from "../API/API";
 import {useQuery} from "react-query";
 
-const fetchNowPlayingMovie = () => {
-	return api.get(`/movie/now_playing`);
+const fetchNowPlayingMovie = (page = 1) => {
+	return api.get(`/movie/now_playing`, {params: {page}});
 }
 
-export const useNowPlayingMovieQuery = () => {
+export const useNowPlayingMovieQuery = (page) => {
 	return useQuery({
-		queryKey: ['movie-now-playing'],
-		queryFn: fetchNowPlayingMovie,
+		queryKey: ['movie-now-playing', page],
+		queryFn: ()=>fetchNowPlayingMovie(page),
 		select: (result) => result.data,
+		keepPreviousData: true,
 	})
 }

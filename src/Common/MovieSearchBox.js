@@ -47,7 +47,6 @@ const MovieSearchBox = ({ data, onSort }) => {
 		<div className="movie-search-box">
 			<div className="movie-search-box-input">
 				<input type="text" placeholder="Search movies" />
-				<button>Search</button>
 			</div>
 			<h4>Genres</h4>
 			<div className="movie-search-box-button">

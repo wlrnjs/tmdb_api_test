@@ -19,3 +19,9 @@
     margin-top: 50px;
     width: 100%;
 }
+
+.react-paginate {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}

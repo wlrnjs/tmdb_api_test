@@ -11,13 +11,18 @@
     margin-bottom: 20px;
 }
 
+.movie-search-box-input input[type="text"] {
+    border: none;
+    outline: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 .movie-search-box-input input {
     border-radius: 5px;
 }
-
-.movie-search-box-input button {
-    border-radius: 5px;
- }
 
 .movie-search-box-input button:hover {
     background-color: #bdbdbd;
